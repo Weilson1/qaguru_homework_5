@@ -30,7 +30,6 @@ public class qaguru_homework_2 {
     @Test
     void succesTest () {
         open("https://demoqa.com/automation-practice-form");
-
         $("#firstName").setValue("John");
         $("#lastName").setValue("Shepard");
         $("#userEmail").setValue("jshepard@email.net");
@@ -51,7 +50,6 @@ public class qaguru_homework_2 {
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Delhi")).click();
         $("#submit").click();
-
         $(byText("Thanks for submitting the form")).shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(
                  text("John Shepard"), text("jshepard@email.net"), text("Male"), text("1111111111"),
@@ -59,5 +57,4 @@ public class qaguru_homework_2 {
                  text("My address is not a house and not the street, my address is the Soviet Union\n"),
                  text("NCR Delhi"));
     }
-
 }
