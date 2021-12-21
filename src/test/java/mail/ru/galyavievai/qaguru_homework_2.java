@@ -1,6 +1,7 @@
 package mail.ru.galyavievai;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.conditions.Visible;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -9,6 +10,8 @@ import org.openqa.selenium.By;
 
 import java.io.File;
 
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
@@ -41,31 +44,20 @@ public class qaguru_homework_2 {
         $("#subjectsInput").setValue("Economics").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("img/1.png");
-        $("#currentAddress").setValue("My address is not a house and not the street, my address is the Soviet Union");
+        $("#currentAddress").setValue(
+                "My address is not a house and not the street, my address is the Soviet Union");
         $("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Delhi")).click();
         $("#submit").click();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        $(byText("Thanks for submitting the form")).shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").shouldHave(
+                 text("John Shepard"), text("jshepard@email.net"), text("Male"), text("1111111111"),
+                 text("09 March,1994"), text("Maths, Economics"), text("Sports"), text("1.png"),
+                 text("My address is not a house and not the street, my address is the Soviet Union\n"),
+                 text("NCR Delhi"));
     }
 
 }
