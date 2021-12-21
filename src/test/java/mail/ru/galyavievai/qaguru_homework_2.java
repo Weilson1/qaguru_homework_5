@@ -5,6 +5,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
+import java.io.File;
+
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -22,14 +25,25 @@ public class qaguru_homework_2 {
         $("#firstName").setValue("John");
         $("#lastName").setValue("Shepard");
         $("#userEmail").setValue("jshepard@email.net");
-        $(".custom-control-label").click();
+        $("[for=gender-radio-1]").click();
         $("#userNumber").setValue("1111111111");
-        $("#currentAddress").setValue("My address is not a house and not the street, my address is the Soviet Union");
-        $(". css-yk16xz-control").selectOptionByValue("NCR");
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__year-select").selectOptionByValue("1999");
+        $(".react-datepicker__year-select").selectOptionByValue("1994");
         $(".react-datepicker__month-select").selectOptionByValue("2");
-        $(".react-datepicker__day").selectOptionByValue("009");
+        $(".react-datepicker__day--009").click();
+        $("#subjectsInput").setValue("Maths").pressEnter();
+        $("#subjectsInput").setValue("Economics").pressEnter();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
+        $("#uploadPicture").uploadFromClasspath("img/1.png");
+        $("#currentAddress").setValue("My address is not a house and not the street, my address is the Soviet Union");
+        $("#state").click();
+        $("#stateCity-wrapper").$(byText("NCR")).click();
+        $("#city").click();
+        $("#stateCity-wrapper").$(byText("Delhi")).click();
+        $("#submit").click();
+
+
+
 
 
 
