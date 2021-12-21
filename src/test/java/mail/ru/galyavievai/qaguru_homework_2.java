@@ -1,6 +1,8 @@
 package mail.ru.galyavievai;
 
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -17,6 +19,10 @@ public class qaguru_homework_2 {
     @BeforeAll
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
+    }
+    @AfterAll
+    static void afterAll() {
+    Configuration.holdBrowserOpen = true;
     }
     @Test
     void succesTest () {
@@ -41,6 +47,9 @@ public class qaguru_homework_2 {
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Delhi")).click();
         $("#submit").click();
+
+
+
 
 
 
