@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QaguruHomework2 {
+public class Qaguru_homework_2 {
 
     @BeforeAll
     static void beforeAll() {
