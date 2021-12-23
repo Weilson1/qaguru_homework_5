@@ -1,23 +1,13 @@
 package ru.mail.galyavievai;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.conditions.Visible;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-
-import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.files.DownloadActions.click;
-import static java.lang.Thread.sleep;
 
 public class qaguru_homework_2 {
     @BeforeAll
@@ -27,7 +17,7 @@ public class qaguru_homework_2 {
     }
 
     @Test
-    void succesTest() throws InterruptedException {
+    void succesTest() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         $("#firstName").setValue("John");
