@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class qaguru_homework_2 {
+public class Qaguru_Homework_2 {
     @BeforeAll
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
