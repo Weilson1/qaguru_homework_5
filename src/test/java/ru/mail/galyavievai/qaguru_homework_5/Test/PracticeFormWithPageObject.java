@@ -1,35 +1,27 @@
-package ru.mail.galyavievai.qaguru_homework_5;
+package ru.mail.galyavievai.qaguru_homework_5.Test;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import ru.mail.galyavievai.qaguru_homework_5.pages.RegistrationPage;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
-public class Qaguru_homework_5 {
+public class PracticeFormWithPageObject extends TestBase {
 
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
-    }
+    RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     void succesTest() {
-        open("/automation-practice-form");
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-        $("#firstName").setValue("John");
-        $("#lastName").setValue("Shepard");
-        $("#userEmail").setValue("jshepard@email.net");
-        $("[for=gender-radio-1]").click();
-        $("#userNumber").setValue("1111111111");
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__year-select").selectOptionByValue("1994");
-        $(".react-datepicker__month-select").selectOptionByValue("2");
-        $(".react-datepicker__day--009:not(.react-datapicker__day--outside-month)").click();
+        registrationPage
+                .openPage()
+                .inputFirstName("John")
+                .inputLastName("Shepard")
+                .inputUserEmail("jshepard@email.net")
+                .inputGenderMale()
+                .inputUserNumber("89123456789")
+                .calendarComponent.setDate("9", "Marth", "1994");
+
         $("#subjectsInput").setValue("Maths").pressEnter();
         $("#subjectsInput").setValue("Economics").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click();
