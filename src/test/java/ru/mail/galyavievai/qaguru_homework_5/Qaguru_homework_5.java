@@ -1,4 +1,4 @@
-package ru.mail.galyavievai;
+package ru.mail.galyavievai.qaguru_homework_5;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class Qaguru_homework_2 {
+public class Qaguru_homework_5 {
 
     @BeforeAll
     static void beforeAll() {
