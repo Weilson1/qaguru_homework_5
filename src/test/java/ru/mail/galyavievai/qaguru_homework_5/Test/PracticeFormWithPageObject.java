@@ -6,7 +6,6 @@ import ru.mail.galyavievai.qaguru_homework_5.pages.RegistrationPage;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class PracticeFormWithPageObject extends TestBase {
 
