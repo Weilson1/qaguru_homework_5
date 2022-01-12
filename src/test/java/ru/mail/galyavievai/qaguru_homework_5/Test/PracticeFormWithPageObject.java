@@ -6,6 +6,7 @@ import ru.mail.galyavievai.qaguru_homework_5.pages.RegistrationPage;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class PracticeFormWithPageObject extends TestBase {
 
@@ -19,26 +20,29 @@ public class PracticeFormWithPageObject extends TestBase {
                 .inputLastName("Shepard")
                 .inputUserEmail("jshepard@email.net")
                 .inputGenderMale()
-                .inputUserNumber("89123456789")
-                .calendarComponent.setDate("9", "Marth", "1994");
-
-        $("#subjectsInput").setValue("Maths").pressEnter();
-        $("#subjectsInput").setValue("Economics").pressEnter();
-        $("#hobbiesWrapper").$(byText("Sports")).click();
-        $("#uploadPicture").uploadFromClasspath("img/1.png");
-        $("#currentAddress").setValue(
-                "My address is not a house and not the street, my address is the Soviet Union").scrollTo();
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("NCR")).click();
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Delhi")).click();
+                .inputUserNumber("8912345678")
+                .calendarComponent.setDate("09", "2", "1994") // Месяцы начинаются с 0
+                .inputSubject("Maths")
+                .inputSubject("Economics")
+                .inputHobbies("Sports")
+                .inputHobbies("Reading")
+                .uploadPicture("img/1.png")
+                .inputAddress("My address is not a house and not the street, my address is the Soviet Union")
+                .inputState("NCR")
+                .inputCity("Delhi");
         $("#submit").click();
+
 // Проверка теста
         $(byText("Thanks for submitting the form")).shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(
-                text("John Shepard"), text("jshepard@email.net"), text("Male"), text("1111111111"),
-                text("09 March,1994"), text("Maths, Economics"), text("Sports"), text("1.png"),
-                text("My address is not a house and not the street, my address is the Soviet Union"),
-                text("NCR Delhi"));
+        registrationPage.checkResult("John Shepard")
+                .checkResult("jshepard@email.net")
+                .checkResult("Male")
+                .checkResult("8912345678")
+                .checkResult("09 March,1994")
+                .checkResult("Maths, Economics")
+                .checkResult("Sports, Reading")
+                .checkResult("1.png")
+                .checkResult("My address is not a house and not the street, my address is the Soviet Union")
+                .checkResult("NCR Delhi");
     }
 }
