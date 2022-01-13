@@ -1,16 +1,17 @@
 package ru.mail.galyavievai.qaguru_homework_5.pages;
 
 import com.codeborne.selenide.SelenideElement;
+//import ru.mail.galyavievai.qaguru_homework_5.Test.TestDate;
 import ru.mail.galyavievai.qaguru_homework_5.component.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.value;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage {
-
-    SelenideElement
+        SelenideElement
             firstNameType = $("#firstName"),
             lastNameType = $("#lastName"),
             userEmailType = $("#userEmail"),
@@ -33,7 +34,6 @@ public class RegistrationPage {
 
     public RegistrationPage inputFirstName(String value) {
         firstNameType.setValue(value);
-
         return this;
     }
 
