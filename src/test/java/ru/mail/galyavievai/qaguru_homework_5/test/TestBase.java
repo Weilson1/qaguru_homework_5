@@ -1,4 +1,4 @@
-package ru.mail.galyavievai.qaguru_homework_5.Test;
+package ru.mail.galyavievai.qaguru_homework_5.test;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;

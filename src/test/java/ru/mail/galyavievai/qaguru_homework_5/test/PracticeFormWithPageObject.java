@@ -1,4 +1,4 @@
-package ru.mail.galyavievai.qaguru_homework_5.Test;
+package ru.mail.galyavievai.qaguru_homework_5.test;
 
 import org.junit.jupiter.api.Test;
 import ru.mail.galyavievai.qaguru_homework_5.pages.RegistrationPage;
@@ -7,41 +7,41 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
-public class PracticeFormWithPageObjectAndFaker extends TestBase {
-    TestDate testDate = new TestDate();
+public class PracticeFormWithPageObject extends TestBase {
+
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     void successTest() {
         registrationPage
                 .openPage()
-                .inputFirstName(testDate.randomFirstName)
-                .inputLastName(testDate.randomLastName)
-                .inputUserEmail(testDate.randomEmail)
+                .inputFirstName("John")
+                .inputLastName("Shepard")
+                .inputUserEmail("jshepard@email.net")
                 .inputGenderMale()
-                .inputUserNumber(testDate.randomPhoneNumber)
+                .inputUserNumber("8912345678")
                 .calendarComponent.setDate("09", "2", "1994") // Месяцы начинаются с 0
                 .inputSubject("Maths")
                 .inputSubject("Economics")
                 .inputHobbies("Sports")
                 .inputHobbies("Reading")
                 .uploadPicture("img/1.png")
-                .inputAddress(testDate.randomAddress)
+                .inputAddress("My address is not a house and not the street, my address is the Soviet Union")
                 .inputState("NCR")
                 .inputCity("Delhi");
         $("#submit").click();
 
 // Проверка теста
         $(byText("Thanks for submitting the form")).shouldHave(text("Thanks for submitting the form"));
-        registrationPage.checkResult(testDate.randomFirstName + " " + testDate.randomLastName)
-                .checkResult(testDate.randomEmail)
+        registrationPage.checkResult("John Shepard")
+                .checkResult("jshepard@email.net")
                 .checkResult("Male")
-                .checkResult(testDate.randomPhoneNumber)
+                .checkResult("8912345678")
                 .checkResult("09 March,1994")
                 .checkResult("Maths, Economics")
                 .checkResult("Sports, Reading")
                 .checkResult("1.png")
-                .checkResult(testDate.randomAddress)
+                .checkResult("My address is not a house and not the street, my address is the Soviet Union")
                 .checkResult("NCR Delhi");
     }
 }
